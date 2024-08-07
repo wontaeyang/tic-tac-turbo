@@ -4,7 +4,7 @@ turbo::cfg! {r#"
     author = "Monty"
     description = "Game of tic tac toe"
     [settings]
-    resolution = [300, 300]
+    resolution = [600, 600]
 "#}
 
 turbo::init! {
@@ -25,7 +25,7 @@ turbo::init! {
     } = {
         Self {
             player_move: Move::Empty,
-            board: vec![vec![Move::Empty; 6]; 6],
+            board: vec![vec![Move::Empty; 12]; 12],
             grid_size: 50,
             size_offset: 10,
             cursor_x: 0,
@@ -63,7 +63,7 @@ turbo::go! ({
         text!(message,
               x = canvas_width / 2 - (message.len() as u32 * 2),
               y = canvas_height / 2,
-              );
+        );
     } else {
         // game loop
         let m = mouse(0);
@@ -100,14 +100,14 @@ turbo::go! ({
                 end = (size * state.grid_size, i * state.grid_size),
                 width = 2,
                 color = 0x000000ff,
-                );
+            );
 
             path!(
                 start = (i * state.grid_size, 0),
                 end = (i * state.grid_size, size * state.grid_size),
                 width = 2,
                 color = 0x000000ff,
-                );
+            );
         }
 
         // draw the moves
@@ -120,13 +120,13 @@ turbo::go! ({
                         end = (i as i32 * state.grid_size + state.grid_size - draw_offset, j as i32 * state.grid_size + state.grid_size - draw_offset),
                         width = 4,
                         color = 0x0088FFFF,
-                        );
+                    );
                     path!(
                         start = (i as i32 * state.grid_size + state.grid_size - draw_offset, j as i32 * state.grid_size + draw_offset),
                         end = (i as i32 * state.grid_size + draw_offset, j as i32 * state.grid_size + state.grid_size - draw_offset),
                         width = 4,
                         color = 0x0088FFFF,
-                        );
+                    );
                 } else if *col == Move::PlayerO {
                     circ!(
                         d = state.grid_size - state.size_offset,
@@ -134,7 +134,7 @@ turbo::go! ({
                         y = state.grid_size * (j as i32) + draw_offset,
                         border_width = 4,
                         border_color = 0xFF2200FF,
-                        );
+                    );
                 }
             }
         }
