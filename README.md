@@ -3,6 +3,8 @@
 This repository contains a simple Turbo engine game of Tic-Tac-Toe with a twist.
 You can customize the game's grid size for more intense game!
 
+original code is here: https://github.com/wontaeyang/tic-tac-goe
+
 
 # Building
 
